@@ -5,11 +5,13 @@ import 'package:third_queue_booking_app/features/counter/domain/repositories/cou
 
 import 'features/home/home.dart';
 import 'features/counter/counter.dart';
+import 'features/splash/splash.dart';
 
 GoRouter buildRouter() {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/splash',
     routes: [
+      GoRoute(path: '/splash', builder: (_, __) => const SplashPage()),
       GoRoute(
         path: '/',
         builder: (context, state) {
