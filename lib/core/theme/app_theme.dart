@@ -13,6 +13,7 @@ class AppTheme {
 
     return ThemeData(
       useMaterial3: true,
+      fontFamily: 'Kanit',
       colorScheme: cs,
       scaffoldBackgroundColor: cs.surface,
 
