@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import '../../../core/core.dart';
 // ถ้าใช้ flutter_native_splash:
@@ -15,22 +17,23 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FlutterNativeSplash.remove();
+    });
     _init();
   }
 
   Future<void> _init() async {
-    await Future.delayed(const Duration(milliseconds: 5000));
-
-    // ถ้าใช้ flutter_native_splash ให้ remove หลัง init:
-    // FlutterNativeSplash.remove();
-
-    // if (mounted) context.go('/'); // ไปหน้า Home
+    await Future.delayed(const Duration(seconds: 3), () {
+      FlutterNativeSplash.remove();
+      if (mounted) context.go('/');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.light().primaryColor,
+      backgroundColor: context.colors.primary,
       body: SafeArea(
         child: Center(
           child: Column(

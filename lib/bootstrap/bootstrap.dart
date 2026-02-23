@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:third_queue_booking_app/bootstrap/app_config.dart';
 import 'package:third_queue_booking_app/bootstrap/env.dart';
 import 'package:third_queue_booking_app/bootstrap/mocks/fake_api_client.dart';
@@ -31,7 +32,8 @@ Future<void> bootstrap({
   required AppConfig config,
   required Widget Function() builder,
 }) async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final binding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: binding);
 
   Bloc.observer = AppBlocObserver();
 
